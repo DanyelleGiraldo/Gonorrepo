@@ -1,11 +1,17 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('./src/config/db')
-const authRoutes = require('./src/modules/auth/interface/auth.routes')
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const connectDB = require('./src/config/db');
+const authRoutes = require('./src/modules/auth/interface/routes/auth.routes');
 
 const app = express();
 app.use(express.json());
 
+connectDB();
+
 app.use('/api/auth', authRoutes);
 
-app.listen(process.env.PORT, () => console.log('server on port: ', process.env.PORT))
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Auth Service running on port ${PORT}`);
+});
