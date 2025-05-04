@@ -10,4 +10,13 @@ function generateToken(account){
     });
 }
 
-module.exports = {generateToken};
+function verifyJwt(token){
+    try{
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        return decoded;
+    } catch (err){
+        return{error: 'Invalid signature or token expired'};
+    }
+}
+
+module.exports = {generateToken, verifyJwt};
