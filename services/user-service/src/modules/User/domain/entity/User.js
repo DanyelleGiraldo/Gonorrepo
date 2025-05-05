@@ -1,5 +1,5 @@
 class User {
-    constructor({nombreCompleto}){
+    constructor({nombreCompleto},{documento}, cuentaId, numtel,){
         this.nombreCompleto = {
             primerNombre: nombreCompleto.primerNombre || '',
             segundoNombre: nombreCompleto.segundoNombre || '',
@@ -16,10 +16,5 @@ class User {
         this.sexo= sexo;
         this.sucursalId= sucursalId;
         this.fotoperfil = fotoperfil;
-        this.datos = {
-            pesoactual: datos.pesoactual,
-            estatura: datos.estatura,
-            porcentajeGrasa: datos.porcentajeGrasa
-        }
     }
 }
